@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { Github, User } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -14,7 +14,7 @@ const NavBar = () => {
         <Button className="hover:bg-white/40 hover:text-white" variant="ghost"><Link href="/">Home</Link></Button>
         <Button className="hover:bg-white/40 hover:text-white" variant="ghost"><Link href="/commits-list">commits list</Link></Button>
         <Button className="hover:bg-white/40 hover:text-white" variant="ghost"><Link href="/contact">Contact</Link></Button>
-        <Button className="px-2"><Link href="/login">Login</Link></Button>
+        <Button className="px-2"><Link className="flex items-center gap-1" href="/login"><User />Login</Link></Button>
       </div>
     </div>
   );
