@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/static/Navbar";
+import Background from "@/components/static/Background";
 
 const nunito = Nunito({
   weight: '400',
@@ -21,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={nunito.className }
+        className={nunito.className}
       >
         <NavBar />
+        <Background>
         {children}
+        </Background>
       </body>
     </html>
   );
