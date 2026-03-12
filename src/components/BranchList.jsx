@@ -9,7 +9,9 @@ export default function BranchList() {
   useEffect(() => {
     const fetchBranches = async () => {
       const res = await fetch("/api/github/branches");
+      console.log("Response from API:", res);
       const data = await res.json();
+      console.log("Fetched branches:", data);
       setBranches(data);
       console.log(data);
     };
@@ -20,9 +22,19 @@ export default function BranchList() {
   return (
     <div className="text-neutral-200 shadow-lg ring-1 ring-black/5 px-6 py-3 rounded-lg border border-white/15 bg-black/50 backdrop-blur-xl">
       <ul>
-        {Branches.map((branch) => (
-          <li className="py-1 flex gap-3 items-center" key={branch.name}><GitPullRequest size={16}/>{branch.name}</li>
-        ))}
+        {Branches.length > 0 ? (
+          Branches.map((branch) => (
+            <li className="py-1 flex gap-3 items-center" key={branch.name}>
+              <GitPullRequest size={16} />
+              {branch.name}
+            </li>
+          ))
+        ) : (
+          <li className="py-1 flex gap-3 items-center">
+            <GitPullRequest size={16} />
+            No branches found
+          </li>
+        )}
       </ul>
     </div>
   );
