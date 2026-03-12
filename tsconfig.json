@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/app/api/github/commits/route.ts", "src/components/CommitList.jsx", "src/components/BranchList.jsx"  ],
   "exclude": ["node_modules"]
 }

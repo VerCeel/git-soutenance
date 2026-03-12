@@ -31,8 +31,8 @@ const NavBar = () => {
 
       <div className="flex items-center gap-4">
         {links.map((link, index) => (
-          <div className="text-neutral-300 hover:text-white">
-            <Link key={index} href={link.href}>{link.label}</Link>
+          <div key={index} className="text-neutral-300 hover:text-white">
+            <Link href={link.href}>{link.label}</Link>
           </div>
         ))}
         <Button size="lg" className="px-2">
