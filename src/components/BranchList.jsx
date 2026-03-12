@@ -33,19 +33,22 @@ export default function BranchList() {
           <SelectTrigger className="w-45">
             <SelectValue placeholder="Select a Branch:" />
           </SelectTrigger>
+
           <SelectContent position="popper">
             <SelectGroup>
-              {branches.length > 0 ? ( 
+              {branches.length > 0 ? (
                 branches.map((branch) => (
-                <SelectItem key={branch.name} value={branch.name}>
-                  <GitPullRequest />
-                  {branch.name}
-                </SelectItem>
+                  <SelectItem key={branch.name} value={branch.name}>
+                    <GitPullRequest />
+                    {branch.name}
+                  </SelectItem>
+                ))
               ) : (
                 <div>No Branch exist</div>
-              ))}
+              )}
             </SelectGroup>
           </SelectContent>
+
         </Select>
       </div>
     </div>
