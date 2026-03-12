@@ -14,7 +14,7 @@ import { constants } from "buffer";
 
 export default function BranchList() {
   const [branches, setBranches] = useState([]);
-  const [selectedBranch, setSelectedBranch] = useState("");
+  const [selectedBranch, setSelectedBranch] = useState("all");
 
   useEffect(() => {
     const fetchBranches = async () => {
@@ -45,7 +45,7 @@ export default function BranchList() {
           onValueChange={(value) => handleChange(value)}
         >
           <SelectTrigger className="w-45">
-            <SelectValue placeholder="Select a Branch:" />
+            <SelectValue />
           </SelectTrigger>
 
           <SelectContent position="popper">
@@ -61,7 +61,7 @@ export default function BranchList() {
         </Select>
       </div>
       <div>
-        <Select>
+        <Select >
           <SelectTrigger className="w-45">
             <SelectValue placeholder="Select a Branch:" />
           </SelectTrigger>
@@ -71,9 +71,9 @@ export default function BranchList() {
               {
                 branches.length > 0 &&
                 branches
-                  .filter((branch) => selectedBranch != "all" && branch.name.includes(selectedBranch))
+                  .filter((branch) => selectedBranch === "all" || branch.name.includes(selectedBranch))
                   .map((branch) => (
-                    <SelectItem key={branch.name} value={branch.name}>
+                    <SelectItem key={branch.name} value={branch.name} >
                       <GitPullRequest />
                       {branch.name}
                     </SelectItem>
