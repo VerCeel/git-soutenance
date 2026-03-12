@@ -2,9 +2,17 @@
 
 import { GitPullRequest } from "lucide-react";
 import { useEffect, useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function BranchList() {
-  const [Branches, setBranches] = useState([]);
+  const [branches, setBranches] = useState([]);
 
   useEffect(() => {
     const fetchBranches = async () => {
@@ -13,7 +21,6 @@ export default function BranchList() {
       const data = await res.json();
       console.log("Fetched branches:", data);
       setBranches(data);
-      console.log(data);
     };
 
     fetchBranches();
@@ -21,21 +28,26 @@ export default function BranchList() {
 
   return (
     <div className="text-neutral-200 shadow-lg ring-1 ring-black/5 px-6 py-3 rounded-lg border border-white/15 bg-black/50 backdrop-blur-xl">
-      <ul>
-        {Branches.length > 0 ? (
-          Branches.map((branch) => (
-            <li className="py-1 flex gap-3 items-center" key={branch.name}>
-              <GitPullRequest size={16} />
-              {branch.name}
-            </li>
-          ))
-        ) : (
-          <li className="py-1 flex gap-3 items-center">
-            <GitPullRequest size={16} />
-            No branches found
-          </li>
-        )}
-      </ul>
+      <div>
+        <Select>
+          <SelectTrigger className="w-45">
+            <SelectValue placeholder="Select a Branch:" />
+          </SelectTrigger>
+          <SelectContent position="popper">
+            <SelectGroup>
+              {branches.length > 0 ? ( 
+                branches.map((branch) => (
+                <SelectItem key={branch.name} value={branch.name}>
+                  <GitPullRequest />
+                  {branch.name}
+                </SelectItem>
+              ) : (
+                <div>No Branch exist</div>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
     </div>
   );
 }
