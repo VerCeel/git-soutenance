@@ -32,13 +32,13 @@ export default function BranchList() {
     fetchBranches();
   }, []);
 
-  const prefixBranches = ["main", "dev", "feat", "fix", "hotfix"];
+  const prefixBranches = ["all","main", "dev", "feat", "fix", "hotfix"];
   const handleChange = (value) => {
     console.log("Selected branch:", value);
     setSelectedBranch(value);
   };
   return (
-    <div className="text-neutral-200 shadow-lg ring-1 ring-black/5 px-6 py-3 rounded-lg border border-white/15 bg-black/50 backdrop-blur-xl">
+    <div className="text-neutral-200 shadow-lg ring-1 ring-black/5 px-6 py-3 rounded-lg border border-white/15 bg-black/50 backdrop-blur-xl flex gap-4">
       <div>
         <Select
           value={selectedBranch}
@@ -71,7 +71,7 @@ export default function BranchList() {
               {
                 branches.length > 0 &&
                 branches
-                  .filter((branch) => branch.name.includes(selectedBranch))
+                  .filter((branch) => selectedBranch != "all" && branch.name.includes(selectedBranch))
                   .map((branch) => (
                     <SelectItem key={branch.name} value={branch.name}>
                       <GitPullRequest />

@@ -6,12 +6,12 @@ const Background = ({ children }: { children: React.ReactNode }) => {
       <div className="absolute min-h-screen w-full select-none ">
         <div className="fixed inset-0 -z-10">
           <DarkVeil
-            hueShift={0}
+            hueShift={1}
             noiseIntensity={0}
-            scanlineIntensity={0}
-            speed={0.5}
+            scanlineIntensity={1}
+            speed={1}
             scanlineFrequency={0}
-            warpAmount={0}
+            warpAmount={0.5}
           />
         </div>
       </div>
