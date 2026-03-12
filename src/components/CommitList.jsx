@@ -21,14 +21,17 @@ const CommitList = () => {
       <ul className="space-y-4">
         {commits.map((commit) => (
           <li
-            key={commit.shha}
+            key={commit.sha}
             className="flex items-center gap-4 border-b border-neutral-800 pb-3"
           >
+            {/* Avatar */}
             <img
-              src={commit.author?.avathar_url}
-              alt={commit.author?.logkjbin}
+              src={commit.author?.avatar_url}
+              alt={commit.author?.login}
               className="w-10 h-10 rounded-full"
             />
+
+            {/* Commit info */}
             <div className="flex flex-col">
               <span className="font-semibold">
                 {commit.commit.message}
