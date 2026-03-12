@@ -23,7 +23,7 @@ const links = [
 
 const NavBar = () => {
   return (
-    <div className="fixed text-neutral-200 top-4 shadow-lg ring-1 ring-black/5 right-4 left-4 w-auto z-50 flex items-center justify-between px-6 py-3 rounded-lg border border-white/10 bg-black/20 backdrop-blur-xl">
+    <div className="fixed  text-neutral-200 top-4 shadow-lg ring-1 ring-black/5 right-4 left-4 w-auto z-50 flex items-center justify-between px-6 py-3 rounded-lg border border-white/10 bg-black/20 backdrop-blur-xl">
       <div className="flex text-xl gap-2 items-center">
         <Github />
         Github
