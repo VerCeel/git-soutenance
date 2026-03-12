@@ -17,7 +17,9 @@ export default function BranchList() {
   useEffect(() => {
     const fetchBranches = async () => {
       const res = await fetch("/api/github/branches");
+      console.log("Response from API:", res);
       const data = await res.json();
+      console.log("Fetched branches:", data);
       setBranches(data);
     };
 
@@ -33,11 +35,14 @@ export default function BranchList() {
           </SelectTrigger>
           <SelectContent position="popper">
             <SelectGroup>
-              {branches && branches.map((branch) => (
+              {branches.length > 0 ? ( 
+                branches.map((branch) => (
                 <SelectItem key={branch.name} value={branch.name}>
                   <GitPullRequest />
                   {branch.name}
                 </SelectItem>
+              ) : (
+                <div>No Branch exist</div>
               ))}
             </SelectGroup>
           </SelectContent>
