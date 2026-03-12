@@ -9,6 +9,8 @@ export async function GET() {
       },
     },
   );
+  console.log("GitHub API response status:", response.status);
+  console.log("GitHub API response:", response);
   const data = await response.json();
   return NextResponse.json(data);
 }
